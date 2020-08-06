@@ -1,0 +1,25 @@
+
+.axis line{
+	stroke: #939393;
+	opacity: .25;
+}
+
+.axis path{
+	stroke: #939393;
+	opacity: .25;
+}
+
+.axis text{
+	fill: #939393;
+	font-size: 14px;
+	opacity: 1;
+}
+
+.tooltip {
+    position: absolute;
+}
+
+.percentileLabel {
+	fill: white;
+	font-size: 11px;
+}
