@@ -223,6 +223,7 @@ d3.csv("data.csv").then(function(data) {
   var legendHeight = height/20;
 
   var legengBG = svg.append("rect")
+     .attr("class", "legend legengBG")
      .attr("x", width/2 - (legendWidth/2))  // to get center shift by half of width
      .attr("y", 15)
      .attr("width", legendWidth)
@@ -230,6 +231,7 @@ d3.csv("data.csv").then(function(data) {
      .attr('fill', '#2C363F');
 
   var annoPriceLow = svg.append("text")
+     .attr("class", "legend legengPriceLow")
      .attr("x", width/2 - (legendWidth/2)+10)
      .attr("y", 25)
      .attr("dominant-baseline", "hanging")
@@ -239,6 +241,7 @@ d3.csv("data.csv").then(function(data) {
      .text("<£5.5m");
 
   var annoPriceMid1 = svg.append("text")
+     .attr("class", "legend legengPriceMid1")
      .attr("x", width/2 - (legendWidth/2)+60)
      .attr("y", 25)
      .attr("dominant-baseline", "hanging")
@@ -248,6 +251,7 @@ d3.csv("data.csv").then(function(data) {
      .text("£5.5m - £7.5m");
 
   var annoPriceMid2 = svg.append("text")
+     .attr("class", "legend legengPriceMid2")
      .attr("x", width/2 - (legendWidth/2)+150)
      .attr("y", 25)
      .attr("dominant-baseline", "hanging")
@@ -257,6 +261,7 @@ d3.csv("data.csv").then(function(data) {
      .text("£7.5m - £10m");
 
   var annoPriceHigh = svg.append("text")
+     .attr("class", "legend legengPriceHigh")
      .attr("x", width/2 - (legendWidth/2)+235)
      .attr("y", 25)
      .attr("dominant-baseline", "hanging")
@@ -305,7 +310,7 @@ d3.csv("data.csv").then(function(data) {
      .attr("font-size", "12px")
      .attr('fill', "grey")
      .style("text-anchor", "middle")
-     .text("Players with 900+ mins. GKs excluced as a large % of their points is generated from saves.");
+     .text("Players with 900+ mins. All data points (current and historic) are based on the 2019/20 FPL positions.");
 
   // Arrow annotations
   var arrowLines = [
@@ -368,18 +373,183 @@ d3.csv("data.csv").then(function(data) {
     .attr("transform", "rotate(-90)")
     .text("xPTS per 90 min.");
 
+  // Info button
+
+  var mouseOnInfo = function(d){
+
+    d3.selectAll(".infoCircle")
+      .transition()
+      .duration(200)
+      .attr("stroke", "white");
+
+    d3.selectAll(".infoButton")
+      .transition()
+      .attr("fill", "white");
+
+    d3.selectAll(".infoRect")
+      .transition()
+      .attr("opacity", .9);
+
+    d3.selectAll(".annoClick")
+      .transition()
+      .attr("opacity", 0);
+
+    d3.selectAll(".infoText")
+      .transition()
+      .attr("opacity", 1);
+
+    d3.selectAll(".priceLines")
+      .transition()
+      .attr("opacity", 0.1);
+
+    d3.selectAll(".playerDot")
+      .transition()
+      .attr("opacity", 0.1);
+
+    d3.selectAll(".playerLabels")
+      .transition()
+      .attr("opacity", 0.1);
+
+    d3.selectAll(".legend")
+      .transition()
+      .attr("opacity", 0.1);
+
+  };
+
+  var mouseOutInfo = function(d){
+
+    d3.selectAll(".infoCircle")
+      .transition()
+      .duration(200)
+      .attr("stroke", "grey");
+
+    d3.selectAll(".infoButton")
+      .transition()
+      .duration(200)
+      .attr("fill", "grey");
+
+    d3.selectAll(".infoRect")
+      .transition()
+      .attr("opacity", 0);
+
+    d3.selectAll(".annoClick")
+      .transition()
+      .attr("opacity", 1);
+
+    d3.selectAll(".infoText")
+      .transition()
+      .attr("opacity", 0);
+
+    d3.selectAll(".priceLines")
+      .transition()
+      .attr("opacity", 1);
+
+    d3.selectAll(".playerDot")
+      .transition()
+      .attr("opacity", 1);
+
+    d3.selectAll(".playerLabels")
+      .transition()
+      .attr("opacity", 1);
+
+    d3.selectAll(".legend")
+      .transition()
+      .attr("opacity", 1);
+
+  };
+
+  var infoRect = svg.append("rect")
+    .attr("class", "infoRect")
+    .attr("x", 33)
+    .attr("y", 35)
+    .attr("width", 500)
+    .attr("height", 480)
+    .attr("fill", "#2C363F")
+    .attr("opacity", 0);
+
+  var infoCircle = svg.append("circle")
+    .attr("class", "infoCircle")
+    .attr("cx", 33)
+    .attr("cy", 35)
+    .attr("r", 8.5)
+    .attr("fill", "#2C363F")
+    .attr("stroke", "grey")
+    .on("click", mouseOnInfo )
+    .on("mouseleave", mouseOutInfo);
+    //.attr("opacity", .9)
+
+  var infoButton = svg.append("text")
+    .attr("class", "infoButton")
+    .attr("x", 33)
+    .attr("y", 37)
+    .attr("font-size", "14px")
+    .attr('fill', "grey")
+    .style("text-anchor", "middle")
+    .attr("alignment-baseline", "middle")
+    .text("i")
+    .on("click", mouseOnInfo )
+    .on("mouseleave", mouseOutInfo);
+
+  var infoTexts = [
+    "How to read:",
+    "Expected Points (xPTS) are based on xG. A player's xG, xA and xG against (clean sheets)",
+    "are multiplied based on FPL's scoring rules for each position (i.e. midfielders score 5",
+    "points for a goal, 1 point for a clean sheet and 3 points for an assist). xPTS does not",
+    "consider points for minutes played, yellow cards, bonus or other scoring ways in FPL.",
+    "Value picks are those who are above the historical 80th percentile while cost picks",
+    "are below. This does not mean Cost picks cannot be good in certain GWs - though",
+    "across a full season better value is elsewhere.",
+    "",
+    "GKs are excluced as a large % of their points is generated from saves.",
+    "All xPTS (current and historic) are based on a player's current FPL position."
+  ];
+
+  for (var i = 0; i < infoTexts.length; i++) {
+
+    if (i>0) {
+      var ySpacing = 10;
+      var boldText = "normal";
+    } else {
+      var ySpacing = 0;
+      var boldText = "bold";
+    };
+
+    svg.append("text")
+      .attr("class", "infoText")
+      .attr("x", 50)
+      .attr("y", 60 + ySpacing + i*20)
+      .attr("font-weight", boldText)
+      .attr("font-size", "12px")
+      .attr("fill", "white")
+      .attr("opacity", 0)
+      .text(infoTexts[i]);
+  };
+
   
   function updateChart(selectedTeam){
 
     // console.log(selectedTeam)
 
     if (selectedTeam == "(All Teams)") {
+      
       var dataFiltered = thisSeason;
+
+      var dataLabels = dataFiltered.filter(function(d){
+        return d.label == "True" & (d.avg_price > 7.8 || d.npxPTS_90 > 2.2);
+      });
+
     } else {
+      
       var dataFiltered = thisSeason.filter(function(d){
         return d.team_now == selectedTeam;
       })
+
+      var dataLabels = dataFiltered.filter(function(d){
+        return d.label == "True";
+      });
+      
     };
+
 
     // Add dots
     var scatter = svg.selectAll(".playerDot")
@@ -428,24 +598,45 @@ d3.csv("data.csv").then(function(data) {
       );
 
     // Player annotations
-    // svg.append("text")
-    //   //.data(dataFiltered)
-    //   .text(function(d){
-    //     if (d.label == "True") {return d.web_name} 
-    //       else {return ""}
-    //   })
-    //   .attr("x", function (d) {
-    //     return x(d.avg_price)+7;
-    //   })
-    //   .attr("y", function (d) {
-    //     return y(d.npxPTS_90);
-    //   })
-    //   .style("fill", function (d) {
-    //     return d.color;
-    //   })
-    //   .attr("class", "text-labels")
-    //   .style("font-size", 10)
-    //   .style("font-weight", "bold");
+    // console.log(dataLabels)
+    // var scatterLabels = svg.selectAll(".playerLabels")
+    //   .data(dataLabels)
+    //   .join(
+    //     enter => enter.append("text")
+    //       .text(function(d){
+    //         return d.web_name
+    //       })
+    //       .attr("x", function (d) {
+    //         return x(d.avg_price)+7;
+    //       })
+    //       .attr("y", function (d) {
+    //         return y(d.npxPTS_90)-5;
+    //       })
+    //       .style("fill", function (d) {
+    //         return d.color;
+    //       })
+    //       .attr("class", "playerLabels")
+    //       .style("font-size", 10)
+    //       .style("font-weight", "bold"),
+    //     update => update
+    //       .text(function(d){
+    //         return d.web_name
+    //       })
+    //       .attr("x", function (d) {
+    //         return x(d.avg_price)+7;
+    //       })
+    //       .attr("y", function (d) {
+    //         return y(d.npxPTS_90)-5;
+    //       })
+    //       .style("fill", function (d) {
+    //         return d.color;
+    //       })
+    //       .attr("class", "playerLabels")
+    //       .style("font-size", 10)
+    //       .style("font-weight", "bold"),
+    //     exit => exit
+    //         .remove()
+    //   );
 
   };
 
