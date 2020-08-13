@@ -142,10 +142,13 @@ d3.csv("data.csv").then(function(data) {
   // A function that change this tooltip when the user hover a point.
   // Set the text and position of tooltip depending on the datapoint (d)
   var mousemove = function(d) {
+    var mouse = d3.mouse(d3.select("#my_dataviz").node())
+      .map(function(d) {return parseInt(d)});
+
     tooltip
       .html(d.web_name + " | " + d.team_short_now + " | xPTS: " + Math.round(d.npxPTS_90 * 100) / 100)
-      .style("left", (d3.mouse(this)[0]+350) + "px")
-      .style("top", (d3.mouse(this)[1] + 30) + "px")
+      .style("left", (mouse[0]+ 30) + "px")
+      .style("top", (mouse[1] + 10) + "px")
       .style("opacity", 1)
   };
 
