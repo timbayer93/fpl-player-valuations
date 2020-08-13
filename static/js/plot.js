@@ -538,7 +538,7 @@ d3.csv("data.csv").then(function(data) {
       var dataFiltered = thisSeason;
 
       var dataLabels = dataFiltered.filter(function(d){
-        return d.label == "True" & (d.avg_price > 7.8 || d.npxPTS_90 > 2.2);
+        return d.label == "True" & (d.avg_price > 8.5 || d.npxPTS_90 > 2.5) & d.web_name != "Abraham";
       });
 
     } else {
@@ -601,45 +601,44 @@ d3.csv("data.csv").then(function(data) {
       );
 
     // Player annotations
-    // console.log(dataLabels)
-    // var scatterLabels = svg.selectAll(".playerLabels")
-    //   .data(dataLabels)
-    //   .join(
-    //     enter => enter.append("text")
-    //       .text(function(d){
-    //         return d.web_name
-    //       })
-    //       .attr("x", function (d) {
-    //         return x(d.avg_price)+7;
-    //       })
-    //       .attr("y", function (d) {
-    //         return y(d.npxPTS_90)-5;
-    //       })
-    //       .style("fill", function (d) {
-    //         return d.color;
-    //       })
-    //       .attr("class", "playerLabels")
-    //       .style("font-size", 10)
-    //       .style("font-weight", "bold"),
-    //     update => update
-    //       .text(function(d){
-    //         return d.web_name
-    //       })
-    //       .attr("x", function (d) {
-    //         return x(d.avg_price)+7;
-    //       })
-    //       .attr("y", function (d) {
-    //         return y(d.npxPTS_90)-5;
-    //       })
-    //       .style("fill", function (d) {
-    //         return d.color;
-    //       })
-    //       .attr("class", "playerLabels")
-    //       .style("font-size", 10)
-    //       .style("font-weight", "bold"),
-    //     exit => exit
-    //         .remove()
-    //   );
+    var scatterLabels = svg.selectAll(".playerLabels")
+      .data(dataLabels)
+      .join(
+        enter => enter.append("text")
+          .text(function(d){
+            return d.web_name
+          })
+          .attr("x", function (d) {
+            return x(d.avg_price)+7;
+          })
+          .attr("y", function (d) {
+            return y(d.npxPTS_90)-5;
+          })
+          .style("fill", function (d) {
+            return d.color;
+          })
+          .attr("class", "playerLabels")
+          .style("font-size", 10)
+          .style("font-weight", "bold"),
+        update => update
+          .text(function(d){
+            return d.web_name
+          })
+          .attr("x", function (d) {
+            return x(d.avg_price)+7;
+          })
+          .attr("y", function (d) {
+            return y(d.npxPTS_90)-5;
+          })
+          .style("fill", function (d) {
+            return d.color;
+          })
+          .attr("class", "playerLabels")
+          .style("font-size", 10)
+          .style("font-weight", "bold"),
+        exit => exit
+            .remove()
+      );
 
   };
 
