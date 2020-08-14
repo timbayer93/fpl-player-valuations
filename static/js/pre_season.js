@@ -301,7 +301,7 @@ d3.csv("data.csv").then(function(data) {
 
   var annoClick2 = svg2.append("text")
      .attr("class", "annoClick")
-     .attr("x", width/2-52)
+     .attr("x", width/2-55)
      .attr("y", 65)
      .attr("font-size", "12px")
      .attr('fill', "grey")
