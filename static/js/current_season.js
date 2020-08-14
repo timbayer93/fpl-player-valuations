@@ -358,7 +358,6 @@ d3.csv("data.csv").then(function(data) {
             .attr("transform", function(d) {
               return "translate(" + x(13.6) + "," + y(4.8) + ")rotate(80)";
              });
-    ;
 
   svg.append("path")
             .attr("d", triangle)
@@ -395,7 +394,7 @@ d3.csv("data.csv").then(function(data) {
 
     d3.selectAll(".infoRect")
       .transition()
-      .attr("opacity", .9);
+      .attr("opacity", .92);
 
     d3.selectAll(".annoClick")
       .transition()
@@ -407,11 +406,11 @@ d3.csv("data.csv").then(function(data) {
 
     d3.selectAll(".playerDot")
       .transition()
-      .attr("opacity", 0.1);
+      .attr("opacity", 0.06);
 
     d3.selectAll(".playerLabels")
       .transition()
-      .attr("opacity", 0.1);
+      .attr("opacity", 0.08);
 
     d3.selectAll(".legend")
       .transition()
@@ -488,18 +487,56 @@ d3.csv("data.csv").then(function(data) {
     .on("click", mouseOnInfo )
     .on("mouseleave", mouseOutInfo);
 
+  var infoAnno = svg.append("text")
+    .attr("class", "infoAnno")
+    .attr("x", 40)
+    .attr("y", 20)
+    .attr("font-size", "11px")
+    .attr('fill', "grey")
+    .text("what are xPTS?")
+
+  svg.append("path")
+    .attr("class", "infoAnno")
+    .datum([{"x": 4.3, "y": 6}, {"x": 4.45, "y": 6}, {"x": 4.6, "y": 6.16}])
+    .attr("d", d3.line()
+      .curve(d3.curveBasis)
+      .x(function(d,j) { return x(d["x"]) })
+      .y(function(d,j) { return y(d["y"]) })
+    )
+    .attr("fill", "none")
+    .attr("stroke", "grey")
+    .attr("stroke-width", 1);
+
+  svg.append("path")
+    .attr("d", d3.symbol()
+      .type(d3.symbolTriangle)
+      .size(12))
+    .attr("stroke", "grey")
+    .attr("fill", "grey")
+    .attr("transform", function(d) {
+      return "translate(" + x(4.3) + "," + y(6) + ")rotate(30)";
+     });
+
   var infoTexts = [
     "How to read:",
     "Expected Points (xPTS) are based on xG. A player's xG, xA and xG against (clean sheets)",
     "are multiplied based on FPL's scoring rules for each position (i.e. midfielders score 5",
-    "points for a goal, 1 point for a clean sheet and 3 points for an assist). xPTS does not",
+    "points for a goal, 1 point for a clean sheet and 3 points for an assist). For example, a",
+    "forward with 7.8 xG and 2.1 xA would have a xPTS total of (7.8 x 4) + (2.1 x 3) = 37.5.",
+    "This total is then divided by the total minutes played x 90 = per 90 mins. xPTS does not",
     "consider points for minutes played, yellow cards, bonus or other scoring ways in FPL.",
+    "",
+    "The 80th percentile is calculated based on previous FPL seasons and xG data. Starting",
+    "with the 2014/15 season up to the previous season. It can help identify 'elite' players.",
+    "",
     "Value picks are those who are above the historical 80th percentile while cost picks",
     "are below. This does not mean Cost picks cannot be good in certain GWs - though",
     "across a full season better value is elsewhere.",
     "",
+    "Additional Notes:",
+    "The faded grey dots on the plot are players from previous seasons (starting in 2014/15).",
     "GKs are excluced as a large % of their points is generated from saves.",
-    "All xPTS (current and historic) are based on a player's current FPL position."
+    "All xPTS (current and historic) are based on a player's FPL position in 2019/20 season."
   ];
 
   for (var i = 0; i < infoTexts.length; i++) {
