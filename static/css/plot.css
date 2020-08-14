@@ -24,16 +24,8 @@
 	font-size: 11px;
 }
 
-/* questrial-regular - latin */
-@font-face {
-  font-family: 'Questrial';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/questrial-v10-latin-regular.eot'); /* IE9 Compat Modes */
-  src: local('Questrial Regular'), local('Questrial-Regular'),
-       url('../fonts/questrial-v10-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/questrial-v10-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/questrial-v10-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/questrial-v10-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/questrial-v10-latin-regular.svg#Questrial') format('svg'); /* Legacy iOS */
+#example2 {
+	border-style: solid;
+	border-color: #2C363F;
+	box-shadow: 10px 10px 50px #252932;
 }
