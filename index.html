@@ -16,53 +16,79 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 	<!-- my css -->
 	<link rel="stylesheet" href="static/css/plot.css">
+	<!-- font -->
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+	</style>
 </head>
-<!-- font-family: Century Gothic; -->
-<body style="background-color: #252932; font-family: <link href='https://fonts.googleapis.com/css2?family=Questrial&display=swap' rel='stylesheet'>; color: #f1f1f1;">  
-	<div class="container-fluid" style="background-color:#252932">
-		<div class="row pt-4 justify-content-between">
-			<div class="col text-center">
-				<h4>FPL: Value and Cost Picks</h4>
-			</div>
-		</div>
-		<div class="row pt-2 justify-content-between">
-			<div class="col text-center">
-				<h6>xG data converted to xPTS per 90 min for the 2019/20 season.</h6>
-				<!-- Initialize a select button -->
-				<!-- <select id="selectButton"></select> -->
-			</div>
-		</div>
-		<div class="row pt-2 justify-content-between">
-			<div class="col text-center">
-				<!-- Initialize a select button -->
-				<select id="selectButton"></select>
-			</div>
-		</div>
-        <div class="row">
-            <div class="col text-center">
-                <div id="my_dataviz"></div>
-            </div>
-        </div>
-        <div class="row">
-        	<div class="col text-left">
-			</div>
-        	<div class="col text-left">
-				<p style="font-size:12px;">Source: <a href="https://understat.com/" style="color:white";>Understat</a></p>
-			</div>
-			<div class="col text-center">
-			</div>
-			<div class="col text-right">
-				<p style="font-size:12px;">created by <a href="https://twitter.com/TimBayer93" style="color:white";>@timbayer93</a></p>
-			</div>
-			<div class="col text-right">
-			</div>
-		</div>
 
+<body style="background-color: #464d5e; font-family: Questrial; color: #f1f1f1;">
+	
+	<div class="container-fluid pt-5">
+		<div class="row justify-content-center">
+			<div class="col-xl-8 col-sm-10 text-center" style="width:60%; background-color: #252932" id="example2">
+				
+				<div class="main-header pt-3">
+					<h4>FPL | Value and Cost Picks</h4>
+				</div>
+				
+				<div class="sub-header">
+					<h6>xG data converted to xPTS per 90 min for the 2019/20 season.</h6>
+				</div>
 
-	<!-- Create a div where the graph will take place -->
-	<!-- <h1 style="text-align:center">Man City - xPTS</h1> -->
-	<!-- <div id="my_dataviz"></div> -->
-	<script src="static/js/plot.js"></script>
+				<div class="col text-center">
+					<!-- Initialize a select button -->
+					<select id="selectButton"></select>
+				</div>
+				
+				<div id="my_dataviz"></div>
+
+				<div class="row">
+		        	<div class="col text-left">
+						<p style="font-size:12px;">Source: <a href="https://understat.com/" style="color:white";>Understat</a></p>
+					</div>
+					<div class="col text-center"></div>
+					<div class="col text-right">
+						<p style="font-size:12px;">created by <a href="https://twitter.com/TimBayer93" style="color:white";>@timbayer93</a></p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row pt-5"></div>
+		<div class="row justify-content-center">
+			<div class="col-xl-8 col-sm-10 text-center" style="width:60%; background-color: #252932" id="example2">
+				
+				<div class="main-header pt-3">
+					<h4>2020/21 | Pre-Season Price Changes</h4>
+				</div>
+				
+				<div class="sub-header">
+					<h6>Price rises and falls based on last season's xPTS.</h6>
+				</div>
+
+				<div class="col text-center">
+					<!-- Initialize a select button -->
+					<select id="selectButton2"></select>
+				</div>
+				
+				<div id="my_dataviz2"></div>
+
+				<div class="row">
+		        	<div class="col text-left">
+						<p style="font-size:12px;">Source: <a href="https://understat.com/" style="color:white";>Understat</a></p>
+					</div>
+					<div class="col text-center"></div>
+					<div class="col text-right">
+						<p style="font-size:12px;">created by <a href="https://twitter.com/TimBayer93" style="color:white";>@timbayer93</a></p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row pt-5"></div>
+	</div>
+	<script src="static/js/current_season.js"></script>
+	<script src="static/js/pre_season.js"></script>
+
 </body>
-
-</html>
