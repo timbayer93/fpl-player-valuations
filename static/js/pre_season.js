@@ -100,7 +100,7 @@ d3.csv("data.csv").then(function(data) {
     tooltip
       .style("opacity", 1)
 
-    d3.selectAll(".playerDot").filter(".fpl" + selectedPlayer)
+    d3.selectAll(".playerDot2").filter(".fpl" + selectedPlayer)
       // .transition()
       // .duration(200)
       .style("stroke", "white")
@@ -122,7 +122,7 @@ d3.csv("data.csv").then(function(data) {
       .duration(200)
       .style("opacity", 0)
 
-    d3.selectAll(".playerDot").filter(".fpl" + selectedPlayer)
+    d3.selectAll(".playerDot2").filter(".fpl" + selectedPlayer)
       .style("stroke", "#252932")
       .style("stroke-width", 1)
 
@@ -224,7 +224,7 @@ d3.csv("data.csv").then(function(data) {
   var legendHeight = height/20;
 
   var legengBG = svg2.append("rect")
-     .attr("class", "legend legengBG")
+     .attr("class", "legend2 legengBG")
      .attr("x", width/2 - (legendWidth/2))  // to get center shift by half of width
      .attr("y", 15)
      .attr("width", legendWidth)
@@ -232,7 +232,7 @@ d3.csv("data.csv").then(function(data) {
      .attr('fill', '#2C363F');
 
   var annoPriceLow = svg2.append("text")
-     .attr("class", "legend legengPriceLow")
+     .attr("class", "legend2 legengPriceLow")
      .attr("x", width/2 - (legendWidth/2)+10)
      .attr("y", 25)
      .attr("dominant-baseline", "hanging")
@@ -242,7 +242,7 @@ d3.csv("data.csv").then(function(data) {
      .text("<£5.5m");
 
   var annoPriceMid1 = svg2.append("text")
-     .attr("class", "legend legengPriceMid1")
+     .attr("class", "legend2 legengPriceMid1")
      .attr("x", width/2 - (legendWidth/2)+60)
      .attr("y", 25)
      .attr("dominant-baseline", "hanging")
@@ -252,7 +252,7 @@ d3.csv("data.csv").then(function(data) {
      .text("£5.5m - £7.5m");
 
   var annoPriceMid2 = svg2.append("text")
-     .attr("class", "legend legengPriceMid2")
+     .attr("class", "legend2 legengPriceMid2")
      .attr("x", width/2 - (legendWidth/2)+150)
      .attr("y", 25)
      .attr("dominant-baseline", "hanging")
@@ -262,7 +262,7 @@ d3.csv("data.csv").then(function(data) {
      .text("£7.5m - £10m");
 
   var annoPriceHigh = svg2.append("text")
-     .attr("class", "legend legengPriceHigh")
+     .attr("class", "legend2 legengPriceHigh")
      .attr("x", width/2 - (legendWidth/2)+235)
      .attr("y", 25)
      .attr("dominant-baseline", "hanging")
@@ -398,19 +398,19 @@ d3.csv("data.csv").then(function(data) {
       .transition()
       .attr("opacity", 1);
 
-    d3.selectAll(".priceLines")
+    d3.selectAll(".priceLines2")
       .transition()
       .attr("opacity", 0.02);
 
-    d3.selectAll(".playerDot")
+    d3.selectAll(".playerDot2")
       .transition()
       .attr("opacity", 0.05);
 
-    d3.selectAll(".playerLabels")
+    d3.selectAll(".playerLabels2")
       .transition()
       .attr("opacity", 0.05);
 
-    d3.selectAll(".legend")
+    d3.selectAll(".legend2")
       .transition()
       .attr("opacity", 0.05);
 
@@ -444,19 +444,19 @@ d3.csv("data.csv").then(function(data) {
       .transition()
       .attr("opacity", 0);
 
-    d3.selectAll(".priceLines")
+    d3.selectAll(".priceLines2")
       .transition()
       .attr("opacity", 1);
 
-    d3.selectAll(".playerDot")
+    d3.selectAll(".playerDot2")
       .transition()
       .attr("opacity", 1);
 
-    d3.selectAll(".playerLabels")
+    d3.selectAll(".playerLabels2")
       .transition()
       .attr("opacity", 1);
 
-    d3.selectAll(".legend")
+    d3.selectAll(".legend2")
       .transition()
       .attr("opacity", 1);
 
@@ -642,11 +642,11 @@ d3.csv("data.csv").then(function(data) {
     });
 
     // Price Lines
-    svg2.selectAll(".priceLines")
+    svg2.selectAll(".priceLines2")
       .data(dataPriceLines)
       .join(
         enter => enter.append("path")
-          .attr("class", "priceLines")
+          .attr("class", "priceLines2")
           .attr("d", d3.line()
             .x(function (d) {return x(d.avg_price)})
             .y(function (d) {return y(d.npxPTS_90)})
@@ -655,7 +655,7 @@ d3.csv("data.csv").then(function(data) {
           .attr("stroke", "white")
           .attr("stroke-width", 1.5),
         update => update
-          .attr("class", "priceLines")
+          .attr("class", "priceLines2")
           .attr("d", d3.line()
             .x(function (d) {return x(d.avg_price)})
             .y(function (d) {return y(d.npxPTS_90)})
@@ -668,12 +668,12 @@ d3.csv("data.csv").then(function(data) {
        );
 
     // Add dots
-    var scatter = svg2.selectAll(".playerDot")
+    var scatter = svg2.selectAll(".playerDot2")
       .data(dataFiltered)
       .join(
         enter => enter.append("circle")
             .attr("class", function (d) {
-              return "playerDot fpl" + d.fpl_player_code.toString()
+              return "playerDot2 fpl" + d.fpl_player_code.toString()
             })
             .attr("r", 6)
             .attr("cx", function (d) {
@@ -692,7 +692,7 @@ d3.csv("data.csv").then(function(data) {
             .on("mouseleave", mouseleave ),
         update => update
             .attr("class", function (d) {
-              return "playerDot fpl" + d.fpl_player_code.toString()
+              return "playerDot2 fpl" + d.fpl_player_code.toString()
             })
             .attr("r", 6)
             .attr("cx", function (d) {
@@ -714,7 +714,7 @@ d3.csv("data.csv").then(function(data) {
       );
 
     // Player annotations
-    var scatterLabels = svg2.selectAll(".playerLabels")
+    var scatterLabels = svg2.selectAll(".playerLabels2")
       .data(dataLabels)
       .join(
         enter => enter.append("text")
@@ -740,7 +740,7 @@ d3.csv("data.csv").then(function(data) {
           .style("fill", function (d) {
             return d.color;
           })
-          .attr("class", "playerLabels")
+          .attr("class", "playerLabels2")
           .style("font-size", 10)
           .style("font-weight", "bold"),
         update => update
@@ -766,7 +766,7 @@ d3.csv("data.csv").then(function(data) {
           .style("fill", function (d) {
             return d.color;
           })
-          .attr("class", "playerLabels")
+          .attr("class", "playerLabels2")
           .style("font-size", 10)
           .style("font-weight", "bold"),
         exit => exit
