@@ -27,7 +27,7 @@ d3.csv("data.csv").then(function(data) {
     return(d.team_now)}).keys();
 
   allTeams.sort();
-  allTeams.unshift("(All Teams)");
+  allTeams.unshift("(Most Popular Players)");
 
   // remove empty values or nulls
   var allTeams = allTeams.filter(Boolean);
@@ -654,13 +654,13 @@ d3.csv("data.csv").then(function(data) {
 
   function updateChart(selectedTeam){
 
-    if (selectedTeam == "(All Teams)") {
+    if (selectedTeam == "(Most Popular Players)") {
       var dataFiltered = data.filter(function(d){
-        return d.season == seasonNow+1;
+        return d.season == seasonNow+1 & d.label == "True";
       });
 
       var dataPriceLines = data.filter(function(d){
-        return d.season >= seasonNow;
+        return d.season >= seasonNow & d.label == "True";
       });
 
     } else {
@@ -771,6 +771,8 @@ d3.csv("data.csv").then(function(data) {
 
             if (d.web_name == 'De Bruyne') {
               return x(d.avg_price)-57
+            } else if (d.web_name == 'Jiménez') {
+              return x(d.avg_price)-70
             } else {
               return x(d.avg_price)+7
             };
@@ -779,9 +781,11 @@ d3.csv("data.csv").then(function(data) {
 
             if (d.web_name == 'Salah') {
               return y(d.npxPTS_90)+11
+            } else if (d.web_name == 'Martial') {
+              return y(d.npxPTS_90)+11
             } else {
               return y(d.npxPTS_90)-5
-            };
+            }
           })
           .style("fill", function (d) {
             return d.color;
@@ -797,6 +801,8 @@ d3.csv("data.csv").then(function(data) {
 
             if (d.web_name == 'De Bruyne') {
               return x(d.avg_price)-57
+            } else if (d.web_name == 'Jiménez') {
+              return x(d.avg_price)-70
             } else {
               return x(d.avg_price)+7
             };
@@ -805,9 +811,11 @@ d3.csv("data.csv").then(function(data) {
 
             if (d.web_name == 'Salah') {
               return y(d.npxPTS_90)+11
+            } else if (d.web_name == 'Martial') {
+              return y(d.npxPTS_90)+11
             } else {
               return y(d.npxPTS_90)-5
-            };
+            }
           })
           .style("fill", function (d) {
             return d.color;
@@ -827,7 +835,7 @@ d3.csv("data.csv").then(function(data) {
       updateChart(selectedOption)
   });
 
-  updateChart("(All Teams)")
+  updateChart("(Most Popular Players)")
 
 })
 .catch(function(error) {
