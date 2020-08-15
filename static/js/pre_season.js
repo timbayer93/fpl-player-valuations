@@ -29,6 +29,9 @@ d3.csv("data.csv").then(function(data) {
   allTeams.sort();
   allTeams.unshift("(All Teams)");
 
+  // remove empty values or nulls
+  var allTeams = allTeams.filter(Boolean);
+
   // add the options to the button
   d3.select("#selectButton2")
       .selectAll('myOptions')
@@ -471,7 +474,7 @@ d3.csv("data.csv").then(function(data) {
     .attr("x", 33)
     .attr("y", 35)
     .attr("width", 500)
-    .attr("height", 480)
+    .attr("height", 490)
     .attr("fill", "#2C363F")
     .attr("opacity", 0);
 
@@ -542,16 +545,18 @@ d3.csv("data.csv").then(function(data) {
     "across a full season better value is elsewhere.",
     "",
     "The faded grey dots on the plot are players from previous seasons (starting in 2014/15).",
-    "GKs are excluced as a large % of their points is generated from saves.",
-    "All xPTS are shown based on a player's current FPL position. Historic data points are",
-    "are based on a player's position in the 2019/20 season."
+    "GKs are excluced as a large % of their points is generated from saves. All xPTS are",
+    "based on a player's current FPL position. Historic data points are based on a player's",
+    "position in the 2019/20 season.",
+    "",
+    "Timo Werner's xPTS has been imputed based on his Bundesliga performance last season."
   ];
 
   for (var i = 0; i < infoTexts.length; i++) {
 
     // ySpacing in relation to title
     if (i>0) {
-      var ySpacing = 100;
+      var ySpacing = 90;
       var boldText = "normal";
     } else {
       var ySpacing = 0;
@@ -666,6 +671,7 @@ d3.csv("data.csv").then(function(data) {
       var dataPriceLines = data.filter(function(d){
         return d.team_now == selectedTeam & d.season >= seasonNow;
       });
+
     };
 
     var dataPriceLines = d3.nest()
@@ -678,7 +684,7 @@ d3.csv("data.csv").then(function(data) {
       });
 
     var dataLabels = dataFiltered.filter(function(d){
-      return d.label == "TRUE";
+      return d.label == "True";
     });
 
     // Price Lines

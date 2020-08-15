@@ -26,6 +26,9 @@ d3.csv("data.csv").then(function(data) {
   allTeams.sort();
   allTeams.unshift("(All Teams)");
 
+  // remove empty values or nulls
+  var allTeams = allTeams.filter(Boolean);
+
   // add the options to the button
   d3.select("#selectButton")
       .selectAll('myOptions')
@@ -568,7 +571,7 @@ d3.csv("data.csv").then(function(data) {
       var dataFiltered = thisSeason;
 
       var dataLabels = dataFiltered.filter(function(d){
-        return d.label == "TRUE" & (d.avg_price > 8.5 || d.npxPTS_90 > 2.5) & d.web_name != "Abraham";
+        return d.label == "True" & (d.avg_price > 8.5 || d.npxPTS_90 > 2.5) & d.web_name != "Abraham";
       });
 
     } else {
@@ -578,7 +581,7 @@ d3.csv("data.csv").then(function(data) {
       })
 
       var dataLabels = dataFiltered.filter(function(d){
-        return d.label == "TRUE";
+        return d.label == "True";
       });
       
     };
