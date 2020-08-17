@@ -380,7 +380,7 @@ d3.csv("data.csv").then(function(data) {
     .attr("dy", ".75em")
     .attr('fill', "#939393")
     .attr("transform", "rotate(-90)")
-    .text("xPTS per 90 min.");
+    .text("xPTS per 90 min (excl. penalties)");
 
   // Info button
 
