@@ -775,6 +775,8 @@ d3.csv("data.csv").then(function(data) {
               return x(d.avg_price)-70
             } else if (d.web_name == 'Rodrigo') {
               return x(d.avg_price)-20
+            } else if (d.web_name == 'Lundstram') {
+              return x(d.avg_price)-14
             } else {
               return x(d.avg_price)+7
             };
@@ -787,6 +789,8 @@ d3.csv("data.csv").then(function(data) {
               return y(d.npxPTS_90)+11
             } else if (d.web_name == 'Rodrigo') {
               return y(d.npxPTS_90)-9
+            } else if (d.web_name == 'Lundstram') {
+              return y(d.npxPTS_90)+16
             } else {
               return y(d.npxPTS_90)-5
             }
@@ -809,6 +813,8 @@ d3.csv("data.csv").then(function(data) {
               return x(d.avg_price)-70
             } else if (d.web_name == 'Rodrigo') {
               return x(d.avg_price)-20
+            } else if (d.web_name == 'Lundstram') {
+              return x(d.avg_price)-14
             } else {
               return x(d.avg_price)+7
             };
@@ -821,6 +827,8 @@ d3.csv("data.csv").then(function(data) {
               return y(d.npxPTS_90)+11
             } else if (d.web_name == 'Rodrigo') {
               return y(d.npxPTS_90)-9
+            } else if (d.web_name == 'Lundstram') {
+              return y(d.npxPTS_90)+16
             } else {
               return y(d.npxPTS_90)-5
             }
