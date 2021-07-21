@@ -2,6 +2,7 @@
 .axis line{
 	stroke: #939393;
 	opacity: .25;
+	stroke-dasharray: 1,1;
 }
 
 .axis path{
@@ -15,8 +16,141 @@
 	opacity: 1;
 }
 
+text.legengPriceLow {
+	font-size: 12px;
+	fill: #1f77b4;
+	font-weight: bold;
+	dominant-baseline: hanging;
+}
+
+text.legengPriceMid1 {
+	font-size: 12px;
+	fill: #6D597A;
+	font-weight: bold;
+	dominant-baseline: hanging;
+}
+
+text.legengPriceMid2 {
+	font-size: 12px;
+	fill: #E56B6F;
+	font-weight: bold;
+	dominant-baseline: hanging;
+}
+
+text.legengPriceHigh {
+	font-size: 12px;
+	fill: #f7b267;
+	font-weight: bold;
+	dominant-baseline: hanging;
+}
+
+text.yLabel {
+	fill: #939393;
+	font-size: 15px;
+	text-align: right;
+}
+
+.mouseLinesX {
+	stroke: #939393;
+	stroke-dasharray: 6,3;
+	opacity: .5;
+}
+
+.mouseLinesY {
+	stroke: #939393;
+	stroke-dasharray: 6,3;
+	opacity: .5;
+}
+
+circle.dots.current.blue {
+	r: 6;
+	fill: #1f77b4;
+	stroke: #252932;
+	opacity: 1;
+}
+
+circle.dots.current.red {
+	r: 6;
+	fill: #E56B6F;
+	stroke: #252932;
+	opacity: 1;
+}
+
+circle.dots.current.orange {
+	r: 6;
+	fill: #f7b267;
+	stroke: #252932;
+	opacity: 1;
+}
+
+circle.dots.current.purple {
+	r: 6;
+	fill: #6D597A;
+	stroke: #252932;
+	opacity: 1;
+}
+
+circle.dots.history {
+	r: 6;
+	fill: #939393;
+	stroke: #939393;
+	opacity: .2;
+}
+
+circle.dots.highlight.purple {
+	r: 6;
+	fill: #6D597A;
+	stroke: white;
+	opacity: 1;
+}
+
+circle.dots.highlight.blue {
+	r: 6;
+	fill: #1f77b4;
+	stroke: white;
+	opacity: 1;
+}
+
+circle.dots.highlight.red {
+	r: 6;
+	fill: #E56B6F;
+	stroke: white;
+	opacity: 1;
+}
+
+circle.dots.highlight.orange {
+	r: 6;
+	fill: #f7b267;
+	stroke: white;
+	opacity: 1;
+}
+
 .tooltip {
     position: absolute;
+}
+
+.priceLines {
+	fill: none;
+	stroke: white;
+	stroke-width: 1;
+}
+
+.percentileLine {
+	fill: none;
+	stroke: white;
+	stroke-width: 2;
+	stroke-dasharray: 6, 3;
+}
+
+.percentileArrowLine {
+	fill: none;
+	stroke: white;
+	stroke-width: 1;
+}
+
+.percentileArrow {
+	fill: white;
+	stroke: white;
 }
 
 .percentileLabel {
@@ -24,16 +158,86 @@
 	font-size: 11px;
 }
 
-.playerLabels2 {
+text.mouseLabelX {
+	fill: #939393;
+	text-anchor: middle;
+	font-size: 12px;
+	text-shadow: 2px 0 0 #252932, -2px 0 0 #252932, 0 2px 0 #252932, 0 -2px 0 #252932, 1px 1px #252932, -1px -1px 0 #252932, 1px -1px 0 #252932, -1px 1px 0 #252932;
+}
+
+text.mouseLabelY {
+	fill: #939393;
+	dominant-baseline: middle;
+	font-size: 12px;
+	text-shadow: 2px 0 0 #252932, -2px 0 0 #252932, 0 2px 0 #252932, 0 -2px 0 #252932, 1px 1px #252932, -1px -1px 0 #252932, 1px -1px 0 #252932, -1px 1px 0 #252932;
+}
+
+text.hoverLabel {
+	text-anchor: middle;
+	fill: white;
+	dominant-baseline: middle;
+	font-size: 12px;
+	text-shadow: 2px 0 0 #252932, -2px 0 0 #252932, 0 2px 0 #252932, 0 -2px 0 #252932, 1px 1px #252932, -1px -1px 0 #252932, 1px -1px 0 #252932, -1px 1px 0 #252932;
+}
+
+text.dataLabel {
+	text-anchor: middle;
+	fill: white;
+	dominant-baseline: middle;
+	font-size: 12px;
+	text-shadow: 2px 0 0 #252932, -2px 0 0 #252932, 0 2px 0 #252932, 0 -2px 0 #252932, 1px 1px #252932, -1px -1px 0 #252932, 1px -1px 0 #252932, -1px 1px 0 #252932;
+}
+
+.infoRect {
+	fill: #2C363F;
+	opacity: 0;
+}
+
+circle.infoCircle {
+	r: 8.5;
+	cy: 35;
+	cx: 33;
+	fill: #2C363F;
+	stroke: grey;
+}
+
+text.infoButton {
+	font-size: 14px;
+	fill: grey;
+	text-anchor: middle;
+	alignment-baseline: middle;
+}
+
+text.infoAnno {
+	font-size: 11px;
+	fill: grey;
+}
+
+.infoAnnoLine {
+	fill: none;
+	stroke: grey;
+	stroke-width: 1;
+}
+
+/*.playerLabels2 {
   text-shadow: 2px 0px 0px #252932, 2px 2px 0px #252932, -2px 2px 0px #252932, -2px -2px 0px #252932, 2px -2px 0px #252932, -2px 0px 0px #252932, 0px 2px 0px #252932, 0px -2px 0px #252932;
 }
 
 .playerLabels {
   text-shadow: 2px 0px 0px #252932, 2px 2px 0px #252932, -2px 2px 0px #252932, -2px -2px 0px #252932, 2px -2px 0px #252932, -2px 0px 0px #252932, 0px 2px 0px #252932, 0px -2px 0px #252932;
-}
+}*/
 
 #example2 {
 	border-style: solid;
 	border-color: #2C363F;
 	box-shadow: 10px 10px 50px #252932;
+}
+
+hr {
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	height: .1px;
+	background-color: white;
+	opacity: .5;
 }
