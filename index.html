@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<!-- Title -->
+	<title>FPL Player Valuations</title>
+	<!-- Load d3.js -->
+	<script src="https://d3js.org/d3.v6.js"></script>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" 
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	<!-- my css -->
+	<link rel="stylesheet" href="static/css/plot.css">
+	<!-- font -->
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+	</style>
+</head>
+
+<body style="background-color: #464d5e; font-family: Questrial; color: #f1f1f1;">
+	
+	<div class="container-fluid pt-5">
+		<div class="row pt-5"></div>
+		<div class="row justify-content-center">
+			<div class="col-xl-8 col-sm-10 text-center" style="width:60%; background-color: #252932" id="example2">
+				
+				<div class="main-header pt-3">
+					<h4>Value and Cost Picks</h4>
+					<!-- <h4>2020/21 | Pre-Season Price Changes</h4> -->
+				</div>
+				
+				<div class="sub-header">
+					<h6>xG data converted to xPTS per 90 min for the 2020/21 season.</h6>
+					<!-- <h6>Price rises and falls based on last season's xPTS.</h6> -->
+					<!-- <h6>If every player were to perform exactly like last year...</h6> -->
+				</div>
+
+				<div class="col text-center">
+					<!-- Initialize a select button -->
+					<select id="selectTeam"></select>
+					<select id="selectPlayer"></select>
+					<input type="checkbox" id="showHistory" name="showHistory" value="showHistory">
+					<label for="showHistory"> Show past seasons</label>
+				</div>
+				
+				<div id="my_dataviz"></div>
+
+				<div class="row">
+		        	<div class="col text-left">
+						<p style="font-size:12px;">Source: <a href="https://fbref.com/en/" target="_blank" rel="noopener noreferrer" style="color:white";>Fbref (Statsbomb)</a> | <a href="https://understat.com/" target="_blank" rel="noopener noreferrer" style="color:white";>Understat</a></p>
+					</div>
+					<div class="col text-center"></div>
+					<div class="col text-right">
+						<p style="font-size:12px;">created by <a href="https://twitter.com/TimBayer93" style="color:white";>@timbayer93</a></p>
+					</div>
+				</div>
+				<div>
+					<hr>
+					<div class="col text-center">
+						<p style="font-size:14px">What are xPTS? </p>
+					</div>
+					<div class="col text-left">
+						<p style="font-size:12px;">
+
+					    Expected Points (xPTS) are based on xG. A player's xG, xA and xG against (clean sheets)
+					    are multiplied based on FPL's scoring rules for each position (i.e. midfielders score 5
+					    points for a goal, 1 point for a clean sheet and 3 points for an assist). For example, a
+					    forward with 7.8 xG and 2.1 xA would have a xPTS total of (7.8 x 4) + (2.1 x 3) = 37.5.
+					    The total xPTS for each player is then divided by the total minutes played x 90 = per 90 mins.
+					    Expected bonus points are also included based on xG values. Penalties are accounted for by crediting
+					    penalty takers with the avg. number of penalties per team per season.
+					    xPTS does not consider points for minutes played, yellow cards or other scoring ways in FPL.
+					    <br>
+					    The 80th percentile is calculated based on the aforementioned methodology for prior FPL seasons. It can help identify 'elite' (top 20%) players.
+					    <br>
+					    'Value' picks are those who are above the historical 80th percentile while cost picks
+					    are below. This does not mean 'Cost' (situational) picks cannot be good selections in certain GWs - though
+					    across a full season better value is elsewhere.
+					    <br><br>
+					    Additional Notes:<br>
+					    The faded grey dots on the plot are players from previous seasons.
+					    GKs are excluced as a signigicant proportion of their points are generated from saves.
+
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row pt-5"></div>
+	</div>
+	<script src="static/js/scatterplot.js"></script>
+
+</body>
