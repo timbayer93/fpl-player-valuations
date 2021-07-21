@@ -154,6 +154,7 @@ function createScatter(d) {
 				.attr("cy", function(d) {
 					return y(d["xpts_90"]);
 				})
+				.attr("r", 6)
 				.on("mouseover", mouseover)
 	        	.on("mouseout", mouseout)
 	        	.on("click", mouseclick), 
@@ -173,6 +174,7 @@ function createScatter(d) {
 				.attr("cy", function(d) {
 					return y(d["xpts_90"]);
 				})
+				.attr("r", 6)
 				.on("mouseover", mouseover)
 	        	.on("mouseout", mouseout)
 	        	.on("click", mouseclick),

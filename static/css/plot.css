@@ -63,63 +63,54 @@ text.yLabel {
 }
 
 circle.dots.current.blue {
-	r: 6;
 	fill: #1f77b4;
 	stroke: #252932;
 	opacity: 1;
 }
 
 circle.dots.current.red {
-	r: 6;
 	fill: #E56B6F;
 	stroke: #252932;
 	opacity: 1;
 }
 
 circle.dots.current.orange {
-	r: 6;
 	fill: #f7b267;
 	stroke: #252932;
 	opacity: 1;
 }
 
 circle.dots.current.purple {
-	r: 6;
 	fill: #6D597A;
 	stroke: #252932;
 	opacity: 1;
 }
 
 circle.dots.history {
-	r: 6;
 	fill: #939393;
 	stroke: #939393;
 	opacity: .2;
 }
 
 circle.dots.highlight.purple {
-	r: 6;
 	fill: #6D597A;
 	stroke: white;
 	opacity: 1;
 }
 
 circle.dots.highlight.blue {
-	r: 6;
 	fill: #1f77b4;
 	stroke: white;
 	opacity: 1;
 }
 
 circle.dots.highlight.red {
-	r: 6;
 	fill: #E56B6F;
 	stroke: white;
 	opacity: 1;
 }
 
 circle.dots.highlight.orange {
-	r: 6;
 	fill: #f7b267;
 	stroke: white;
 	opacity: 1;
