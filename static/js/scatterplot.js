@@ -438,10 +438,10 @@ function mouseclick(event, d) {
 	var selectedPlayer = currentClass[currentClass.length - 1];
 
 	d3.selectAll(".dots")
-		.style("opacity", .1);
+		.style("opacity", .06);
 
 	d3.selectAll(".dataLabel")
-     	.style("opacity", .1);
+     	.style("opacity", 0);
 
 	d3.selectAll(".dots" ).filter("." + selectedPlayer)
 		.style("opacity", 1);
